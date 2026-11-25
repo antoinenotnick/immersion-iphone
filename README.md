@@ -54,12 +54,10 @@ The phone version of the [Immersion browser extension](https://github.com/antoin
 
 1. **Get the free [Userscripts app](https://apps.apple.com/app/userscripts/id1463298887)** and open it once.
 2. **Turn it on** in Settings → Apps → Safari → Extensions → Userscripts (iOS 17 and earlier: Settings → Safari → Extensions). Set **All Websites** to **Allow**; translations can't be fetched without it.
-3. **Add the script**, either way:
-   - **As a file:** download [`dist/immersion.user.js`](dist/immersion.user.js) and, in the Files app, move it to **On My iPhone → Userscripts** (or the folder you picked in the app).
-   - **Over Wi-Fi from a computer:** run `npm install` and `npm run serve` in this folder and open the address it prints in Safari. Then tap the extensions button in the address bar → **Userscripts** → install.
+3. **Add the script:** on your iPhone, open **[immersion.user.js](https://raw.githubusercontent.com/antoinenotnick/immersion-iphone/main/dist/immersion.user.js)** in Safari, then tap the extensions button in the address bar → **Userscripts** → **Install**.
 4. **Open any website** and pick your languages. If the welcome sheet doesn't appear, open the Userscripts popup once so it notices the new script, then reload.
 
-To update, replace the file. Keep its name: your settings belong to it.
+Updates arrive through the Userscripts app, which checks this repository for new versions.
 
 ## Setup
 
@@ -92,7 +90,7 @@ src/
   main.js     connects them
 scripts/      build and serve
 test/         end-to-end tests
-dist/         the built script
+dist/         the built script and its header (for update checks)
 docs/         images
 ```
 
@@ -100,7 +98,10 @@ docs/         images
 npm install
 npm run build   # src/ -> dist/immersion.user.js
 npm test        # builds, then drives the script in Chrome with iPhone emulation
+npm run serve   # offers the script to a phone on the same Wi-Fi, for testing changes
 ```
+
+To release an update, raise `version` in `package.json`, build and push.
 
 Tests need Google Chrome. Safari-specific behaviour still has to be checked on a phone.
 
