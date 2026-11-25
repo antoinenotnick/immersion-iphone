@@ -1,0 +1,15 @@
+{
+  "name": "immersion-phone",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "serve": "npm run build && node scripts/serve.mjs",
+    "test": "npm run build && node test/run.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "playwright-core": "^1.65.0"
+  }
+}
